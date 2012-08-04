@@ -28,7 +28,7 @@ public class DecoderSinglish extends Decoder {
 		
 		this.specialCharUni = new String[3];
 		this.specialChar = new String[3];
-		
+		this.setup();
 		this.nVowels = 26;
 	}
 	
@@ -66,8 +66,8 @@ public class DecoderSinglish extends Decoder {
 	    this.specialConsonantsUni[1]="ඃ"; this.specialConsonants[1]="\\h";
 	    this.specialConsonantsUni[2]="ඞ"; this.specialConsonants[2]="\\N";
 	    this.specialConsonantsUni[3]="ඍ"; this.specialConsonants[3]="\\R";
-	    this.specialConsonantsUni[4]="ර්'+'\u200D"; this.specialConsonants[4]="R";
-	    this.specialConsonantsUni[5]="ර්'+'\u200D"; this.specialConsonants[5]="\\r";
+	    this.specialConsonantsUni[4]="ර්"+"\u200D"; this.specialConsonants[4]="R";
+	    this.specialConsonantsUni[5]="ර්"+"\u200D"; this.specialConsonants[5]="\\r";
 	    
 	    this.consonantsUni[0]="ඬ"; this.consonants[0]="nnd";
 	    this.consonantsUni[1]="ඳ"; this.consonants[1]="nndh";
@@ -120,6 +120,59 @@ public class DecoderSinglish extends Decoder {
 	    this.specialCharUni[0]="ෲ"; this.specialChar[0]="ruu";
 	    this.specialCharUni[1]="ෘ"; this.specialChar[1]="ru";
 	    //this.specialCharUni[2]='්‍ර"; this.specialChar[2]="ra";
+	}
+	
+	public String process(String text)
+	{
+		String s,r,v;
+		for (int i=0; i<specialConsonants.length; i++){
+	        text = text.replaceAll("specialConsonants[i].toString()", "specialConsonantsUni[i].toString()");
+	    }
+		
+		for (int i=0; i<specialCharUni.length; i++){
+	        for (int j=0;j<consonants.length;j++){
+	            s = consonants[j] + specialChar[i];
+	            v = consonantsUni[j] + specialCharUni[i];
+	            //r = new RegExp(s, "g");
+	            text = text.replaceAll(s, v);
+	        }
+	    }
+		
+		for (int j=0;j<consonants.length;j++){
+		        for (int i=0;i<vowels.length;i++){
+		            s = consonants[j] + "r" + vowels[i];
+		            v = consonantsUni[j] + "්‍ර" + vowelModifiersUni[i];
+		           //r = new RegExp(s, "g");
+		            text = text.replaceAll(s, v);
+		        }
+		        s = consonants[j] + "r";
+		        v = consonantsUni[j] + "්‍ර";
+		        //r = new RegExp(s, "g");
+		        text = text.replaceAll(s, v);
+		}
+		
+		for (int i=0;i<consonants.length;i++){
+	        for (int j=0;j<nVowels;j++){ 
+	            s = consonants[i]+vowels[j];
+	            v = consonantsUni[i] + vowelModifiersUni[j];
+	           // r = new RegExp(s, "g");
+	            text = text.replaceAll(s, v);
+	        }
+	    }
+
+	    //consonents + HAL
+	    for (int i=0; i<consonants.length; i++){
+	        s = consonants[i];
+	        text = text.replaceAll(s, consonantsUni[i]+"්");
+	    }
+	        
+	    //vowels
+	    for (int i=0; i<vowels.length; i++){
+	        s = vowels[i];
+	        text = text.replace(s, vowelsUni[i]);
+	    }
+		 
+		return text;
 	}
 	
 	

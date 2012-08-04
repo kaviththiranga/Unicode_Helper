@@ -6,7 +6,7 @@ public class Launcher {
 	 */
 	public static void main(String[] args) {
 		
-		HelperUserInterface hUI = new HelperUserInterface("ExamMCQ.lk - Unicode Helper");
+		HelperUserInterface hUI = new HelperUserInterface("ExamMCQ.lk -Sinhala Unicode Assistant");
 		hUI.setupGUI();
 	}
 
