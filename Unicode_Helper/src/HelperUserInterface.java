@@ -65,7 +65,7 @@ public class HelperUserInterface extends JFrame {
 		this.centerPanel= new JPanel();//new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 		
 		this.sourceText = new JTextArea(10, 20);		
-		this.sourceText.setText("Enter your text here");
+		this.sourceText.setText("obath uthsaaha kara balanna...");
 		this.sourceText.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Color.white));
 		this.sourceText.setBackground(Color.LIGHT_GRAY);
 		this.centerPanel.add(this.addScroll(this.sourceText));
@@ -91,6 +91,7 @@ public class HelperUserInterface extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.pack();
 		this.setVisible(true);
+		convertToUnicode();
 		
 	}
 	public ImageIcon createImageIcon(String path) {
