@@ -11,7 +11,9 @@ import decoder.Decoder;
 import decoder.DecoderDL;
 import decoder.DecoderFM;
 
-
+/**
+ * Kavith Thiranga Lokuhewage
+ */
 public class HelperUserInterface extends JFrame {
 
 	KeyboardFocusManager keyboardFManager;

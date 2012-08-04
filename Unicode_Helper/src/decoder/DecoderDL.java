@@ -1,5 +1,7 @@
 package decoder;
-
+/**
+ * Kavith Thiranga Lokuhewage
+ */
 public class DecoderDL extends Decoder {
 
 	public DecoderDL() {
